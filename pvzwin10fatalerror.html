@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>正体不明のメモ（Plants vs. Zombies Win10での起動）</title>
+<meta name="viewport" content="width=480">
+<meta content="summary" name="twitter:card" />
+<meta property="og:title" content="正体不明のメモ（Plants vs. Zombies Win10での起動）">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Windows 10でPlants vs. ZombiesのFatal Errorを回避する方法">
+<meta property="og:url" content="https://shoutaifumei.github.io/knowledge/pvzwin10fatalerror.html">
+<meta property="og:image" content="https://shoutaifumei.github.io/knowledge/img/card_pvzwin10fatalerror.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css" type="text/css">
+<style>
+.content_frame {
+	max-width: 960px;
+	margin: 0px auto;
+}
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 95%;
+	background: #fff;
+}
+
+img {
+	max-width: 98%;
+}
+
+div#body {
+	max-width: 960px;
+	min-height: 480px;
+	margin: 0px auto;
+	padding: 16px;
+	font-size: 18px;
+	font-family: "Noto Sans JP","游ゴシック","Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"MS ゴシック",sans-serif;
+	word-wrap: break-word;
+	background: #fffafa;
+	border: 1px solid silver;
+}
+
+h1 {
+	font-size: 24px;
+	border-bottom: 1px solid #000;
+}
+
+h2 {
+	font-size: 20px;
+	border-bottom: 1px solid #aaa;
+}
+
+a {
+	font-size: 1.1em;
+	color: #21a;
+}
+
+input[type="button"], button {
+	min-width: 80px;
+	margin: 12px;
+	padding: 8px 10px 6px;
+	text-decoration: none;
+	box-shadow: 2.828px 2.828px 3px 0px rgba( 0, 0, 0, 0.3 ) inset;
+	border-style: none;
+	border-radius: 6px;
+	background: #bbd;
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #fff;
+	cursor: pointer;
+}
+input[type="button"]:hover, button:hover {
+	background: #eee;
+}
+input[type="button"]:active, button:active {
+	background: #eee;
+	box-shadow: -3px -3px 3px 0px rgba( 0, 0, 0, 0.3 ) inset;
+	margin: 13px 11px 11px 13px;
+}
+input[type="button"][disabled], button[disabled] {
+	background: gray;
+}
+
+.single_page_dialog {
+	width: 98%;
+	background: #fff;
+	box-shadow: 2.828px 2.828px 4px 0px rgba( 0, 0, 0, 0.3 );
+}
+
+.dialog_caption {
+	margin: 0px;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	text-indent: 0.5em;
+	width: 100%;
+	background: #0a6;
+	color: #fff;
+}
+
+.common_error .dialog_caption {
+	background: #b04;
+}
+
+.dialog_message {
+	margin: 30px 25px;
+}
+
+.dialog_buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+.submit_button {
+	min-width: 25%;
+}
+</style>
+</head>
+<body>
+<div id="body">
+<div class="content_frame">
+<h1>Windows 10でPlants vs. ZombiesのFatal Errorを回避する方法</h1>
+<div>
+<br>
+●はじめに…<br>
+このメモはPlants vs. Zombies GOTY Edition Steam版をWindows 10で起動しようとすると<br>
+『Fatal Error!』という謎のウィンドウが大量に出てうわああああ！となるのを回避した方法のメモです。<br>
+細かいハードウェア環境やSteam版以外がどうなのかとかはわかっておりません。<br>
+<br>
+<br>
+●方法１（まっとうな方法）<br>
+どうもこのエラーの原因は、グラフィック処理にあるらしく、<br>
+フルスクリーンモードでのみ発生するとかなんとか。<br>
+でも初期状態がフルスクリーンで起動するため、ウィンドウモードにするためのオプション画面にそもそもたどり着けません。<br>
+よってレジストリ上で直接設定を変更します。<br>
+これは1回うわああああ！となった人向けです。試していないのでインストール直後はうまくいくかわかりません。<br>
+具体的には、HKEY_CURRENT_USER\Software\SteamPopCap\PlantsVsZombies\ScreenModeを0にします。<br>
+※【余談】Steamじゃない版はこのSteamPopCapがPopCapになるだけかも？<br>
+<br>
+よくわからない人向けに、ダブルクリックして「はい」「はい」と進めば終わるファイルを用意しました。<br>
+↓（名前を付けて保存し、ファイルをダブルクリックして起動）<br>
+<a href="PlantsVsZombies_WindowMode.reg">レジストリエントリーファイル</a><br>
+<br>
+あとは普通にSteamから起動すればウィンドウモードで起動します。<br>
+<br>
+<br>
+●方法２（謎　の　方　法）<br>
+レジストリはなんかこわいなー、という人はまずこちらを試してみてもいいでしょう。<br>
+普通にSteamからPlants vs. Zombiesの起動操作をしますが、この時Shiftキーを押しっぱなしにします。<br>
+いつまで押すかというと、Steamの小さい「起動の準備をしています」というようなウィンドウ表示が消えてもなお、ずっと押したままにします。<br>
+Shiftキーである必要はなく、Ctrlキー、またはテンキーの0でも、<br>
+あるいはキーを押すのではなく、起動操作をしてから、ひたすら何もないところ（タスクバーとか）をマウスで全力クリック連打します。<br>
+<br>
+上記のどの方法でも、何故かエラーなく起動します。<br>
+<br>
+これでうまくいく理由が謎なので環境によっては全く駄目かもしれません。<br>
+起動したらオプション設定で早々にウィンドウモードへ変更しましょう。<br>
+そうすれば以後は普通に起動可能です。<br>
+<br>
+</div>
+</div>
+</div>
+</body>
+</html>
